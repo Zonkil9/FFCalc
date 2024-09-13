@@ -7,7 +7,7 @@ The **FFCalc** program is designed as a mere calculator for use with already obt
 
 For some computational chemistry methods, the analytical calculations of electric properties are too expensive or even might not yet be available. In such situations, the numerical finite-field approach can be useful.
 
-The finite-field approach was presented in [Bartlett, R. J., & Purvis, G. D. (1979), Phys. Rev. A, 20(4), 1313–1322](doi.org/10.1103/PhysRevA.20.1313). It is based on the idea that the molecule's energy changes while perturbed by a static external electric field; thus, it provides information about the molecule's response to its presence. 
+The finite-field approach was presented in [Bartlett, R. J., & Purvis, G. D. (1979), Phys. Rev. A, 20(4), 1313–1322](https://doi.org/10.1103/PhysRevA.20.1313). It is based on the idea that the molecule's energy changes while perturbed by a static external electric field; thus, it provides information about the molecule's response to its presence. 
 
 Below is an example of the calculations you need to perform, explained in the 4 steps below:
 
