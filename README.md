@@ -1,7 +1,7 @@
 # FFCalc
 **FFCalc** is a Python program with a simple GUI for obtaining electric properties using the results of calculations performed using the finite-field method. **FFCalc** is able to calculate the dipole moment μ, the dipole polarizability α, the first-order hyperpolarizability β, and the second-order hyperpolarizability γ. As of now, the program can provide only the diagonal terms of the mentioned properties using either single (1F), double (2F), or triple (3F) values of the electric field.
 
-The **FFCalc** program is designed as a mere calculator for use with already obtained energy results using a different software. It does not have any capabilities to obtain the energies; see the Background section for more information.
+The **FFCalc** program is designed as a calculator for use with already obtained energy results using a different software. It does not have any capabilities to obtain the energies; see the Background section for more information.
 
 ## Background
 
