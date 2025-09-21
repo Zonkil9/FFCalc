@@ -46,10 +46,25 @@ the lower-order electric properties will be more accurate.
 An important reminder: to obtain accurate results of electric properties, one should choose the method that includes the
 electron correlation and the basis set with diffuse functions.
 
+## Generalized Romberg Procedure (GR)
+
+The `romberg.py` module adds a dedicated GUI window (opened from the main app via the “GR Procedure” button) that
+implements the generalized Romberg differentiation procedure to obtain derivatives of the energy at F = 0 using energy
+values computed at geometrically spaced fields ±a^k h (k = 0, 1, …). For details,
+see: [Medved', M. et al. (2007), J. Mol. Struct. THEOCHEM, 847, 39-46](https://doi.org/10.1016/j.theochem.2007.08.028).
+
+Implementation details:
+
+- Local derivative estimates at F = 0 are evaluated from symmetric sets of points using Fornberg’s finite-difference
+  weights for nonuniform grids,
+- Romberg extrapolation is performed with ratio a and powers a^(2j) appropriate for central stencils,
+- Typical choices are h ≈ 0.001-0.003 a.u. and a in the range 1.2–1.6; ensure the field remains within your method’s
+  linear response regime.
+
 ## Program requirements
 
-The program requires the `tkinter` package to work. It usually comes pre-installed with Python. If you do not have it,
-it can be installed using the system package manager. For example:
+The base program requires the `tkinter` package to work. It usually comes pre-installed with Python. If you do not have
+it, it can be installed using the system package manager. For example:
 
 * Ubuntu/Debian
 
@@ -63,19 +78,36 @@ sudo apt install python3-tk
 sudo dnf install python3-tkinter
 ```
 
-* MacOS
+* macOS (Homebrew)
 
 ```bash
 brew install python-tk
 ```
 
+For the GR Procedure window (`romberg.py`), the program also requires `numpy`:
+
+```bash
+pip install numpy
+```
+
 ## Usage
 
-Simply execute the program using:
+Start the main GUI:
 
 ```bash
 python FFCalc.py
 ```
 
-The GUI should appear. You can paste your input data (calculated using different software) and then click
-`Calculate properties` and `Save results`.
+Classic finite-field workflow (1F/2F/3F):
+
+- Select 1F, 2F or 3F in the main window, paste energies for X, Y, Z directions and E(F0),
+- Enter the field value F,
+- Click `Calculate properties` and optionally `Save results`.
+
+Generalized Romberg Procedure (GR):
+
+- In the main window, click `GR Procedure` to open the Romberg GUI,
+- In the GR window set the base field h and the ratio a (> 1),
+- Select the number of pairs (k); only enabled inputs are read (inactive ones are ignored),
+- Enter E(0) and energies for enabled pairs: E(±h), E(±a h), E(±a^2 h), …,
+- Click `Show Results Table` to inspect the Romberg-extrapolated sequences μ_R, α_R, β_R, γ_R as k increases.

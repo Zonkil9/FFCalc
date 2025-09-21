@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import filedialog
 from tkinter import messagebox as tk_mb
 import tkinter as tk
+import romberg
 
 
 class Window(Frame):
@@ -303,7 +304,7 @@ class Window(Frame):
         field_label.grid(row=0, column=0, columnspan=3)
         self.field = tk.Entry(right_side_one)
         self.field.grid(row=1, column=0)
-        self.field.insert(END, "0")
+        self.field.insert(END, "0.001")
 
         energy_labels = tk.Label(left_side_one, text="E(F0): ")
         energy_labels.grid(row=1, column=0)
@@ -355,13 +356,16 @@ class Window(Frame):
             self.results[i].configure(state="readonly")
 
         calc_button = Button(right_side_three, text="Calculate properties", command=lambda: self.calc())
-        calc_button.grid(row=14, column=1)
+        calc_button.grid(row=12, column=1)
 
         saving_button = Button(right_side_three, text="Save results", command=lambda: self.save())
-        saving_button.grid(row=14, column=2)
+        saving_button.grid(row=14, column=1)
+
+        romberg_button = Button(right_side_four, text="GR Procedure", command=lambda: romberg.romberg_window())
+        romberg_button.grid(row=12, column=1)
 
         exit_button = Button(right_side_four, text="End", command=self.exit)
-        exit_button.grid(row=14, column=0)
+        exit_button.grid(row=14, column=1)
 
 
 root = Tk()
